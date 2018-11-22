@@ -1,0 +1,6 @@
+name: Custom Migration
+description: 'Helps to understand the migration'
+type: module
+core: 8.x
+version: 1.0
+package: Custom

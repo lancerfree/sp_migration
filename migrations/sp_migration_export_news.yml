@@ -1,0 +1,26 @@
+id: sp_migration_export_news
+label: 'News from current site'
+migration_tags:
+  - Export
+  - News
+source:
+  plugin: news_source_plugin
+  constants:
+    #used by all plugins
+    image_destination_dir: 'public://unmanaged_news_images_dest/'
+process:
+  nid: nid
+  status: status
+  title: title
+  created: created
+  body: body
+  images:
+    plugin: news_prepare_images_process_plugin
+    destination_dir: constants/image_destination_dir
+    source: images
+  tags:
+    plugin: news_prepare_tags_process_plugin
+    source: tags
+destination:
+  plugin: news_another_db_destination_plugin
+  destination_dir: constants/image_destination_dir

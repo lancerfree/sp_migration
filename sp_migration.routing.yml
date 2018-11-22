@@ -1,0 +1,8 @@
+#path for testing
+sp_migration.start-migration:
+  path: 'migration/{migration_name}/{migration_direction}'
+  defaults:
+    _controller: '\Drupal\sp_migration\Controller\StartMigrationController::startMigration'
+    _title: 'Execute Migration'
+  requirements:
+    _permission: 'access content'

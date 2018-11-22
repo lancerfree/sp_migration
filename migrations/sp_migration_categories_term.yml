@@ -1,0 +1,47 @@
+#see dependencies
+id: sp_migration_categories_term
+label: Terms of Categories
+migration_tags:
+  - Category
+source:
+  plugin: csv
+  path: 'modules/custom/sp_migration/assets/categories.csv'
+  keys:
+    - base
+  column_names:
+    0:
+      category: 'Category label.'
+    1:
+      base: 'Key and dynamic part of the category.'
+    2:
+      description: 'Description category.'
+    3:
+      image: 'Source image name in the folder.'
+  constants:
+    path_to_source_images: 'modules/custom/sp_migration/assets/category_images/'
+    uid: 1
+    destination_image_path: 'public://term_category/'
+process:
+  tid: base
+  name: category
+  full_path_image:
+    plugin: concat
+    source:
+     - 'constants/path_to_source_images'
+     - image
+  'description/value':
+    plugin: normalize_auto_data
+    source: description
+  field_category_image:
+    plugin: image_import
+    source: '@full_path_image'
+    destination: 'constants/destination_image_path'
+    #User owner for term
+    uid: 'constants/uid'
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: category
+dependencies:
+  enforced:
+    module:
+      - migrate_file

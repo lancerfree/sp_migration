@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<vocabulary>
+    <name>Auto</name>
+    <description>
+        Contains auto categories
+    </description>
+    <terms>
+        <term>
+            <name>Ford</name>
+            <description>
+                American cars for the middle class
+            </description>
+        </term>
+        <term>
+            <name>BMW</name>
+            <description>
+                German cars mainly for young people
+            </description>
+        </term>
+        <term>
+            <name>Toyota</name>
+            <description>
+                Japanese cars mainly for the middle class
+            </description>
+        </term>
+        <term>
+            <name>Mersedes</name>
+            <description>
+                German cars mainly for the middle class
+            </description>
+        </term>
+        <term>
+            <name>Mercedes-Benz</name>
+            <description>
+                Car for rich man from Germany
+            </description>
+        </term>
+        <term>
+            <name>LADA</name>
+            <description>
+                With love from Russia
+            </description>
+        </term>
+        <term>
+            <name>ZAZ</name>
+            <description>
+                With love from Ukraine
+            </description>
+        </term>
+    </terms>
+</vocabulary>

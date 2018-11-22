@@ -1,0 +1,51 @@
+#see dependencies
+id: sp_migration_categories_url_alias
+label: Category Term Alias
+migration_tags:
+  - Category
+  - Alias
+source:
+  plugin: csv
+  path: 'modules/custom/sp_migration/assets/categories.csv'
+  keys:
+    - base
+  column_names:
+    0:
+      category: 'Category label.'
+    1:
+      base: 'Key and dynamic part of the category.'
+    2:
+      description: 'Description category.'
+    3:
+      image: 'Source image name in the folder.'
+  constants:
+    default_language: 'und'
+    #path for alias
+    source_taxonomy_base_path: '/taxonomy/term/'
+    #Delta for a new path
+    result_category_base_path: '/category/'
+process:
+  tid:
+    plugin: 'migration_lookup'
+    migration: 'sp_migration_categories_term'
+    source: base
+  source:
+    plugin: concat
+    source:
+      - 'constants/source_taxonomy_base_path'
+      - '@tid'
+  alias:
+    plugin: concat
+    source:
+      - 'constants/result_category_base_path'
+      - base
+  langcode: 'constants/default_language'
+destination:
+   plugin: 'url_alias'
+migration_dependencies:
+  required:
+    - sp_migration_categories_term
+dependencies:
+  enforced:
+    module:
+      - migrate_csv_source

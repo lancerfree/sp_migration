@@ -1,0 +1,24 @@
+id: sp_migration_automobilies
+label: Automobiles
+migration_tags:
+  - Auto
+source:
+  plugin: auto_vocabulary_source
+  assets_file_path: 'auto_vocabulary.xml'
+  vocabulary_id: 'auto_vocabulary.xml'
+  fields:
+    name: field_auto
+    description: field_auto_description
+  constants:
+    types: 'auto'
+process:
+  tid: name
+  name: name
+  'description/value':
+    plugin: normalize_auto_data
+    source: description
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: auto
+
+
