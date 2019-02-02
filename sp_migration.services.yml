@@ -1,0 +1,5 @@
+services:
+  sp_migration.commands:
+    class: \Drupal\sp_migration\Commands\SPMigrationCommands
+    tags:
+      - { name: drush.command }
